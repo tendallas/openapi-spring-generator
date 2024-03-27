@@ -19,6 +19,13 @@ import org.springframework.core.io.Resource;
 public interface {{classname}} {
 
 {{#operation}}
+    {{#responses}}
+        {{#responseCode}}
+            {{#vendorExtensions.x-entity}}
+    @ch.audienzz.lib.permissions.annotations.KeyEntity(value = "{{vendorExtensions.x-entity}}")
+            {{/vendorExtensions.x-entity}}
+        {{/responseCode}}
+    {{/responses}}
     {{#contents}}
     @RequestMapping(
             value = "{{{path}}}",{{#hasProduces}}
